@@ -46,6 +46,59 @@ void agregarProducto() {
     cout << "Producto agregado." << endl;
 }
 
+void eliminarProducto() {
+    int codigoEliminar;
+    cout << "Ingrese el código del producto a eliminar: ";
+    cin >> codigoEliminar;
+
+    int posicion = -1;
+    for (int i = 0; i < cantidadProductos; i++) {
+        if (listaProductos[i].codigo == codigoEliminar) {
+            posicion = i;
+            break;
+        }
+    }
+
+    if (posicion == -1) {
+        cout << "Producto no encontrado." << endl;
+        return;
+    }
+
+    Producto* nuevoArreglo = new Producto[cantidadProductos - 1];
+
+    int indiceNuevo = 0;
+    for (int i = 0; i < cantidadProductos; i++) {
+        if (i != posicion) {
+            nuevoArreglo[indiceNuevo++] = listaProductos[i];
+        }
+    }
+
+    delete[] listaProductos;
+    listaProductos = nuevoArreglo;
+    cantidadProductos--;
+
+    cout << "Producto eliminado." << endl;
+}
+
+void buscarProductoPorCodigo() {
+    int codigoBuscado;
+    cout << "Ingrese el código a buscar: ";
+    cin >> codigoBuscado;
+
+    for (int i = 0; i < cantidadProductos; i++) {
+        if (listaProductos[i].codigo == codigoBuscado) {
+            cout << "Nombre: " << listaProductos[i].nombre
+                 << " | Precio: " << listaProductos[i].precio
+                 << " | Stock: " << listaProductos[i].stock
+                 << " | Categoría: " << listaProductos[i].categoria << endl;
+            return;
+        }
+    }
+
+    cout << "Producto no encontrado." << endl;
+}
+
+
 int main() {
     string nombreArchivo = "Inventario.bin";
     cargarDesdeArchivoBinario(nombreArchivo);
