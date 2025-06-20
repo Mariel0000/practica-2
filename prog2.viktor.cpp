@@ -202,38 +202,4 @@ void cargarDesdeArchivoBinario(const string& nombreArchivo) {
 }
 
 int main() {
-    string nombreArchivo = "Inventario.bin";
-    cargarDesdeArchivoBinario(nombreArchivo);
-
-    int opcion;
-    do {
-        cout << "\n--- Menú ---" << endl;
-        cout << "1. Agregar producto" << endl;
-        cout << "2. Mostrar productos" << endl;
-        cout << "3. Buscar producto por código" << endl;
-        cout << "4. Modificar producto" << endl;
-        cout << "5. Eliminar producto" << endl;
-        cout << "6. Guardar datos en archivo" << endl;
-        cout << "7. Salir" << endl;
-        cout << "Opción: ";
-        cin >> opcion;
-
-        switch (opcion) {
-            case 1: agregarProducto(); break;
-            case 2: mostrarProductos(); break;
-            case 3: buscarProductoPorCodigo(); break;
-            case 4: modificarProducto(); break;
-            case 5: eliminarProducto(); break;
-            case 6: guardarEnArchivoBinario(nombreArchivo); break;
-            case 7:
-                guardarEnArchivoBinario(nombreArchivo);
-                delete[] listaProductos;
-                cout << "Programa finalizado." << endl;
-                break;
-            default:
-                cout << "Opción inválida." << endl;
-        }
-    } while (opcion != 7);
-
-    return 0;
-}
+   
